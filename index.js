@@ -12,7 +12,6 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Poppins,system-ui;background:var(--secondary);color:var(--text);margin:0;overflow-x:hidden;position:relative}
     
-    /* Fond animé avec formes fluorescentes */
     .bg-shapes{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
     .shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:float 20s infinite ease-in-out}
     .shape1{width:500px;height:500px;background:var(--primary);top:-200px;left:-200px;animation-delay:0s}
@@ -27,7 +26,6 @@
       75%{transform:translate(40px,20px) scale(1.05)}
     }
     
-    /* Particules flottantes */
     .particles{position:fixed;inset:0;z-index:0;pointer-events:none}
     .particle{position:absolute;width:3px;height:3px;background:var(--primary);border-radius:50%;animation:rise 15s infinite linear;opacity:.3}
     
@@ -38,10 +36,9 @@
       100%{transform:translateY(-100vh) translateX(50px);opacity:0}
     }
     
-    /* Contenu principal */
     .content{position:relative;z-index:1}
     
-    header{position:sticky;top:0;z-index:9;background:rgba(15,20,27,.85);border-bottom:1px solid #30363d;backdrop-filter:blur(10px);animation:slideDown .5s ease-out}
+    header{position:sticky;top:0;z-index:9;background:rgba(15,20,27,.95);border-bottom:1px solid #30363d;backdrop-filter:blur(10px);animation:slideDown .5s ease-out}
     
     @keyframes slideDown{
       from{transform:translateY(-100%);opacity:0}
@@ -65,7 +62,7 @@
     .ghost{background:transparent;border:1px solid #30363d}
     .ghost:hover{border-color:var(--primary);background:rgba(0,212,255,.1)}
     
-    .container{max-width:1100px;margin:auto;padding:40px 20px}
+    .container{max-width:1100px;margin:auto;padding:40px 20px;position:relative;z-index:1}
     .hero{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;animation:fadeInUp 1s ease-out}
     
     @keyframes fadeInUp{
@@ -83,17 +80,21 @@
     }
     
     .search{display:flex;gap:10px;margin-top:20px;animation:fadeInUp 1s ease-out .4s backwards}
-    .search input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid #30363d;background:rgba(15,20,27,.6);color:#fff;backdrop-filter:blur(10px);transition:all .3s}
+    .search input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid #30363d;background:rgba(15,20,27,.8);color:#fff;backdrop-filter:blur(10px);transition:all .3s}
     .search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 20px rgba(0,212,255,.3);transform:scale(1.02)}
     
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-    .card{background:rgba(22,27,34,.8);border-radius:20px;padding:20px;text-align:center;border:1px solid #30363d;transition:all .4s;position:relative;backdrop-filter:blur(10px);animation:fadeInUp 1s ease-out backwards;opacity:0}
+    .section-title{text-align:center;margin:40px 0 30px;font-size:32px;background:linear-gradient(135deg,#fff,#00d4ff,#fff);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;position:relative;z-index:1}
+    .card{background:rgba(22,27,34,.9);border-radius:20px;padding:20px;text-align:center;border:1px solid #30363d;transition:all .4s;position:relative;backdrop-filter:blur(10px);animation:fadeInUp 1s ease-out backwards}
     .card:nth-child(1){animation-delay:.1s}
     .card:nth-child(2){animation-delay:.2s}
     .card:nth-child(3){animation-delay:.3s}
     .card:nth-child(4){animation-delay:.4s}
     .card:nth-child(5){animation-delay:.5s}
     .card:nth-child(6){animation-delay:.6s}
+    .card:nth-child(7){animation-delay:.7s}
+    .card:nth-child(8){animation-delay:.8s}
     .card:hover{transform:translateY(-12px) scale(1.03);border-color:var(--primary);box-shadow:0 15px 40px rgba(0,212,255,.3),0 0 60px rgba(0,212,255,.2)}
     .card::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,transparent,rgba(0,212,255,.1));opacity:0;transition:.4s}
     .card:hover::before{opacity:1}
@@ -115,7 +116,9 @@
       50%{transform:translateY(-5px)}
     }
     
-    .row{display:flex;gap:10px;justify-content:center}
+    .subscription-card{background:linear-gradient(135deg,rgba(130,0,255,.2),rgba(0,212,255,.2));border:2px solid #8200ff}
+    .subscription-card:hover{border-color:#00d4ff}
+    
     .toast{position:fixed;bottom:20px;right:20px;background:linear-gradient(45deg,#0082ff,#00d4ff);color:#fff;padding:14px 18px;border-radius:14px;display:none;font-weight:600;box-shadow:0 5px 20px rgba(0,212,255,.5);animation:slideInRight .4s ease-out;z-index:999}
     
     @keyframes slideInRight{
@@ -130,14 +133,14 @@
       to{opacity:1}
     }
     
-    .modal .box{background:rgba(15,20,27,.95);border:2px solid var(--primary);border-radius:18px;padding:30px;width:min(92%,500px);max-height:80vh;overflow-y:auto;animation:scaleIn .4s ease-out;box-shadow:0 20px 60px rgba(0,212,255,.4)}
+    .modal .box{background:rgba(15,20,27,.98);border:2px solid var(--primary);border-radius:18px;padding:30px;width:min(92%,500px);max-height:80vh;overflow-y:auto;animation:scaleIn .4s ease-out;box-shadow:0 20px 60px rgba(0,212,255,.4)}
     
     @keyframes scaleIn{
       from{transform:scale(0.8);opacity:0}
       to{transform:scale(1);opacity:1}
     }
     
-    .cart-item{background:rgba(22,27,34,.8);padding:15px;border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;border:1px solid #30363d;transition:all .3s;animation:slideInLeft .3s ease-out backwards}
+    .cart-item{background:rgba(22,27,34,.9);padding:15px;border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;border:1px solid #30363d;transition:all .3s;animation:slideInLeft .3s ease-out backwards}
     .cart-item:nth-child(1){animation-delay:.05s}
     .cart-item:nth-child(2){animation-delay:.1s}
     .cart-item:nth-child(3){animation-delay:.15s}
@@ -159,11 +162,11 @@
     .remove-btn:hover{background:#cc0000;transform:scale(1.1)}
     
     .total-box{background:linear-gradient(135deg,#0082ff,#00d4ff,#00ff88);background-size:200% 200%;animation:gradientShift 3s ease infinite;padding:20px;border-radius:12px;margin:20px 0;text-align:center;box-shadow:0 10px 30px rgba(0,212,255,.4)}
-    .total-box h3{margin:0;font-size:28px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5);animation:pulse 2s ease-in-out infinite}
+    .total-box h3{margin:0;font-size:28px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
     
     .empty-cart{text-align:center;padding:40px;opacity:.6;animation:fadeIn 1s ease-out}
     footer{opacity:.6;text-align:center;padding:40px;animation:fadeInUp 1s ease-out 1s backwards}
-    details{background:rgba(22,27,34,.8);padding:15px;border-radius:12px;margin:10px 0;border:1px solid #30363d;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
+    details{background:rgba(22,27,34,.9);padding:15px;border-radius:12px;margin:10px 0;border:1px solid #30363d;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
     details:hover{border-color:var(--primary);box-shadow:0 5px 20px rgba(0,212,255,.2)}
     summary{font-weight:600;cursor:pointer;transition:.3s}
     details[open] summary{color:var(--primary)}
@@ -176,10 +179,8 @@
       100%{box-shadow:0 0 0 0 rgba(255,68,68,0)}
     }
     
-    /* Effet de brillance sur les titres */
     h2{background:linear-gradient(135deg,#fff,#00d4ff,#fff);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     
-    /* Scrollbar personnalisée */
     ::-webkit-scrollbar{width:10px}
     ::-webkit-scrollbar-track{background:var(--secondary)}
     ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#0082ff,#00d4ff);border-radius:10px}
@@ -193,7 +194,6 @@
   </style>
 </head>
 <body>
-<!-- Fond animé avec formes fluorescentes -->
 <div class="bg-shapes">
   <div class="shape shape1"></div>
   <div class="shape shape2"></div>
@@ -201,10 +201,8 @@
   <div class="shape shape4"></div>
 </div>
 
-<!-- Particules flottantes -->
 <div class="particles" id="particles"></div>
 
-<!-- Contenu principal -->
 <div class="content">
 <header>
   <div class="nav">
@@ -228,64 +226,16 @@
 </section>
 
 <main class="container">
-  <div class="grid" id="grid">
-    <div class="card" data-name="110 diamants">
-      <span class="badge">PROMO</span>
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="110 Diamants">
-      <h3>100 + 10 Diamants</h3>
-      <p class="price">650 FCFA</p>
-      <button class="btn" onclick="addToCart('100 + 10 Diamants', 650)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
-    
-    <div class="card" data-name="343 diamants">
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="343 Diamants">
-      <h3>310 + 33 Diamants</h3>
-      <p class="price">2000 FCFA</p>
-      <button class="btn" onclick="addToCart('310 + 33 Diamants', 2000)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
-    
-    <div class="card" data-name="572 diamants">
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="572 Diamants">
-      <h3>520 + 52 Diamants</h3>
-      <p class="price">3300 FCFA</p>
-      <button class="btn" onclick="addToCart('520 + 52 Diamants', 3300)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
-    
-    <div class="card" data-name="1166 diamants">
-      <span class="badge">TOP VENTE</span>
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="1166 Diamants">
-      <h3>1060 + 106 Diamants</h3>
-      <p class="price">6500 FCFA</p>
-      <button class="btn" onclick="addToCart('1060 + 106 Diamants', 6500)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
+  <h2 class="section-title">💎 Packs Diamants</h2>
+  <div class="grid" id="diamondGrid"></div>
 
-    <div class="card" data-name="2200 diamants">
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="2200 Diamants">
-      <h3>2000 + 200 Diamants</h3>
-      <p class="price">13000 FCFA</p>
-      <button class="btn" onclick="addToCart('2000 + 200 Diamants', 13000)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
-
-    <div class="card" data-name="5600 diamants">
-      <span class="badge">BEST VALUE</span>
-      <img class="product-img" src="https://i.imgur.com/9nKXN5L.png" alt="5600 Diamants">
-      <h3>5000 + 600 Diamants</h3>
-      <p class="price">32500 FCFA</p>
-      <button class="btn" onclick="addToCart('5000 + 600 Diamants', 32500)" style="width:100%">➕ Ajouter au panier</button>
-    </div>
-  </div>
+  <h2 class="section-title">⭐ Abonnements</h2>
+  <div class="grid" id="subscriptionGrid"></div>
 </main>
 
 <section class="container">
   <h2>💳 Moyens de paiement</h2>
   <p>✅ <b>Mobile Money (MTN & Orange Money)</b> uniquement — aucun autre moyen accepté.</p>
-</section>
-
-<section class="container">
-  <h2>⭐ Témoignages</h2>
-  <p>⭐⭐⭐⭐⭐ « Livraison en 2 minutes, sérieux ! » — Kevin</p>
-  <p>⭐⭐⭐⭐⭐ « Paiement Orange Money accepté, parfait. » — Sarah</p>
-  <p>⭐⭐⭐⭐⭐ « Service rapide et fiable, je recommande ! » — Michel</p>
 </section>
 
 <section class="container">
@@ -324,7 +274,30 @@
 </div>
 
 <script>
+// Base de données des produits
+const products = {
+  diamonds: [
+    { id: 1, name: '110 Diamants', diamonds: 110, price: 650, badge: 'PROMO' },
+    { id: 2, name: '231 Diamants', diamonds: 231, price: 1400, badge: null },
+    { id: 3, name: '583 Diamants', diamonds: 583, price: 3500, badge: 'TOP VENTE' },
+    { id: 4, name: '1188 Diamants', diamonds: 1188, price: 7000, badge: null },
+    { id: 5, name: '2420 Diamants', diamonds: 2420, price: 14500, badge: null },
+    { id: 6, name: '5600 Diamants', diamonds: 5600, price: 33500, badge: 'BEST VALUE' }
+  ],
+  subscriptions: [
+    { id: 7, name: 'Abonnement Hebdomadaire', duration: '7 jours', price: 1700, badge: null },
+    { id: 8, name: 'Abonnement Mensuel', duration: '30 jours', price: 7000, badge: 'POPULAIRE' }
+  ]
+};
+
 let cart = {};
+
+// Initialisation
+function init() {
+  createParticles();
+  loadProducts();
+  loadCart();
+}
 
 // Génération des particules
 function createParticles() {
@@ -338,35 +311,338 @@ function createParticles() {
     container.appendChild(particle);
   }
 }
-createParticles();
 
-function addToCart(name, price) {
-  if (cart[name]) {
-    cart[name].qty++;
-  } else {
-    cart[name] = { price, qty: 1 };
-  }
-  updateCartDisplay();
-  showToast('✅ ' + name + ' ajouté au panier');
+// Charger les produits depuis la "base de données"
+function loadProducts() {
+  const diamondGrid = document.getElementById('diamondGrid');
+  const subscriptionGrid = document.getElementById('subscriptionGrid');
+  
+  // Charger les diamants
+  diamondGrid.innerHTML = products.diamonds.map((product, index) => `
+    <div class="card" data-name="${product.name.toLowerCase()}" style="animation-delay: ${index * 0.1}s">
+      ${product.badge ? `<span class="badge">${product.badge}</span>` : ''}
+      <img class="product-img" src="https://i.ibb.co/cSn63Jvc/495077066-608102602304064-8697694855776305520-n-jpg-nc-cat-101-ccb-1-7-nc-sid-9f807c-nc-eui2-Ae-FF.jpg" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p class="price">${product.price.toLocaleString()} FCFA</p>
+      <button class="btn" onclick="addToCart(${product.id}, 'diamond')" style="width:100%">➕ Ajouter au panier</button>
+    </div>
+  `).join('');
+  
+  // Charger les abonnements
+  subscriptionGrid.innerHTML = products.subscriptions.map((product, index) => {
+    const imgUrl = index === 0 
+      ? 'https://i.ibb.co/ZzfJpR6x/613650220-1604122014237794-6655977740986373332-n-jpg-stp-dst-jpg-p480x480-tt6-nc-cat-101-ccb-1-7-n.jpg'
+      : 'https://i.ibb.co/sdXr0TyT/614184102-1560285791686856-6336493226340822985-n-jpg-stp-dst-jpg-p480x480-tt6-nc-cat-102-ccb-1-7-n.jpg';
+    
+    return `
+    <div class="card subscription-card" data-name="${product.name.toLowerCase()}" style="animation-delay: ${(index + 6) * 0.1}s">
+      ${product.badge ? `<span class="badge">${product.badge}</span>` : ''}
+      <img class="product-img" src="${imgUrl}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p style="color:#00d4ff;font-weight:600;margin:5px 0">${product.duration}</p>
+      <p class="price">${product.price.toLocaleString()} FCFA</p>
+      <button class="btn" onclick="addToCart(${product.id}, 'subscription')" style="width:100%">➕ Ajouter au panier</button>
+    </div>
+    `;
+  }).join('');
 }
 
-function removeFromCart(name) {
-  delete cart[name];
+// Charger le panier depuis localStorage
+function loadCart() {
+  const saved = localStorage.getItem('ffDiamondCart');
+  if (saved) {
+    cart = JSON.parse(saved);
+    updateCartDisplay();
+  }
+}
+
+// Sauvegarder le panier dans localStorage
+function saveCart() {
+  localStorage.setItem('ffDiamondCart', JSON.stringify(cart));
+}
+
+// Ajouter au panier
+function addToCart(productId, type) {
+  const product = type === 'diamond' 
+    ? products.diamonds.find(p => p.id === productId)
+    : products.subscriptions.find(p => p.id === productId);
+  
+  if (!product) return;
+  
+  const key = `${type}_${productId}`;
+  
+  if (cart[key]) {
+    cart[key].qty++;
+  } else {
+    cart[key] = {
+      id: productId,
+      type: type,
+      name: product.name,
+      price: product.price,
+      qty: 1
+    };
+  }
+  
+  saveCart();
+  updateCartDisplay();
+  showToast('✅ ' + product.name + ' ajouté au panier');
+}
+
+// Retirer du panier
+function removeFromCart(key) {
+  delete cart[key];
+  saveCart();
   updateCartDisplay();
   showToast('🗑️ Article retiré du panier');
 }
 
-function updateQty(name, delta) {
-  if (cart[name]) {
-    cart[name].qty += delta;
-    if (cart[name].qty <= 0) {
-      removeFromCart(name);
+// Mettre à jour la quantité
+function updateQty(key, delta) {
+  if (cart[key]) {
+    cart[key].qty += delta;
+    if (cart[key].qty <= 0) {
+      removeFromCart(key);
     } else {
+      saveCart();
       updateCartDisplay();
     }
   }
 }
 
+// Afficher le panier
+function updateCartDisplay() {
+  const cartEl = document.getElementById('cart');
+  const totalBox = document.getElementById('totalBox');
+  const cartCount = document.getElementById('cartCount');
+  const userInfoSection = document.getElementById('userInfoSection');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  
+  const items = Object.keys(cart);
+  const totalItems = items.reduce((sum, key) => sum + cart[key].qty, 0);
+  
+  if (items.length === 0) {
+    cartEl.innerHTML = '<div class="empty-cart">🛒 Votre panier est vide</div>';
+    totalBox.style.display = 'none';
+    cartCount.style.display = 'none';
+    userInfoSection.style.display = 'none';
+  } else {
+    cartEl.innerHTML = items.map(key => `
+      <div class="cart-item">
+        <div>
+          <strong>${cart[key].name}</strong><br>
+          <small>${cart[key].price.toLocaleString()} FCFA × ${cart[key].qty}</small>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="updateQty('${key}', -1)">−</button>
+            <span style="font-weight:700;min-width:25px;text-align:center">${cart[key].qty}</span>
+            <button class="qty-btn" onclick="updateQty('${key}', 1)">+</button>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart('${key}')">🗑️</button>
+        </div>
+      </div>
+    `).join('');
+    
+    const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
+    document.getElementById('total').textContent = `Total: ${total.toLocaleString()} FCFA`;
+    totalBox.style.display = 'block';
+    userInfoSection.style.display = 'block';
+    
+    cartCount.textContent = totalItems;
+    cartCount.style.display = 'inline-flex';
+  }
+}
+
+// Ouvrir la modal
+function openModal() {
+  document.getElementById('modal').style.display = 'flex';
+  updateCartDisplay();
+}
+
+// Fermer la modal
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+// Valider le formulaire
+function validateForm() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const country = document.getElementById('country').value;
+  const playerId = document.getElementById('playerId').value.trim();
+  
+  if (!firstName) {
+    showToast('⚠️ Veuillez entrer votre prénom');
+    return false;
+  }
+  
+  if (!lastName) {
+    showToast('⚠️ Veuillez entrer votre nom');
+    return false;
+  }
+  
+  if (!country) {
+    showToast('⚠️ Veuillez sélectionner votre pays');
+    return false;
+  }
+  
+  if (!playerId) {
+    showToast('⚠️ Veuillez entrer votre ID Player');
+    return false;
+  }
+  
+  return true;
+}
+
+// Commander via WhatsApp ou Paiement Direct
+function checkout() {
+  const items = Object.keys(cart);
+  if (items.length === 0) {
+    showToast('⚠️ Votre panier est vide');
+    return;
+  }
+  
+  // Valider le formulaire
+  if (!validateForm()) {
+    return;
+  }
+  
+  // Afficher le choix de paiement
+  showPaymentChoice();
+}
+
+// Afficher le choix entre WhatsApp et Paiement Direct
+function showPaymentChoice() {
+  const choice = confirm(
+    '💳 CHOISISSEZ VOTRE MODE DE PAIEMENT\n\n' +
+    '✅ Cliquez OK pour PAYER MAINTENANT avec Mobile Money\n' +
+    '❌ Cliquez ANNULER pour commander via WhatsApp'
+  );
+  
+  if (choice) {
+    // Paiement direct
+    proceedToPayment();
+  } else {
+    // WhatsApp
+    sendToWhatsApp();
+  }
+}
+
+// Procéder au paiement direct
+function proceedToPayment() {
+  const items = Object.keys(cart);
+  
+  // Récupérer les informations du client
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const country = document.getElementById('country').value;
+  const playerId = document.getElementById('playerId').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  
+  // Préparer les données de commande
+  const orderItems = items.map(key => ({
+    name: cart[key].name,
+    qty: cart[key].qty,
+    price: cart[key].price
+  }));
+  
+  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
+  
+  const orderData = {
+    customer: {
+      firstName,
+      lastName,
+      country,
+      playerId,
+      phone
+    },
+    items: orderItems,
+    total
+  };
+  
+  // Sauvegarder dans localStorage pour le site de paiement
+  localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+  
+  // Ouvrir le site de paiement
+  // IMPORTANT: Remplacez par l'URL réelle de votre site de paiement
+  window.open('payment.html', '_blank');
+  
+  showToast('✅ Redirection vers le paiement...');
+}
+
+// Envoyer via WhatsApp
+function sendToWhatsApp() {
+  const items = Object.keys(cart);
+  
+  // Récupérer les informations du client
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const country = document.getElementById('country').value;
+  const playerId = document.getElementById('playerId').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  
+  // Construire le message WhatsApp
+  let message = '🎮 *NOUVELLE COMMANDE DIAMOND SHOP*\n\n';
+  message += '👤 *INFORMATIONS CLIENT*\n';
+  message += `Nom complet: ${firstName} ${lastName}\n`;
+  message += `Pays: ${country}\n`;
+  message += `ID Player: ${playerId}\n`;
+  if (phone) {
+    message += `Téléphone: ${phone}\n`;
+  }
+  message += '\n📦 *COMMANDE*\n';
+  
+  items.forEach(key => {
+    const item = cart[key];
+    message += `• ${item.name} x${item.qty} = ${(item.price * item.qty).toLocaleString()} FCFA\n`;
+  });
+  
+  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
+  message += `\n💰 *TOTAL: ${total.toLocaleString()} FCFA*\n`;
+  message += `\n💳 Mode de paiement: Mobile Money`;
+  
+  const url = 'https://wa.me/237681246628?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+}
+
+// Filtrer les cartes
+function filterCards() {
+  const query = document.getElementById('q').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    const name = card.dataset.name;
+    card.style.display = name.includes(query) ? 'block' : 'none';
+  });
+}
+
+// Afficher le toast
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.style.display = 'block';
+  setTimeout(() => toast.style.display = 'none', 2000);
+}
+
+// Fermer la modal en cliquant à l'extérieur
+document.getElementById('modal').addEventListener('click', (e) => {
+  if (e.target.id === 'modal') closeModal();
+});
+
+// Initialiser au chargement
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
+    cart[key].qty += delta;
+    if (cart[key].qty <= 0) {
+      removeFromCart(key);
+    } else {
+      saveCart();
+      updateCartDisplay();
+    }
+  }
+}
+
+// Afficher le panier
 function updateCartDisplay() {
   const cartEl = document.getElementById('cart');
   const totalBox = document.getElementById('totalBox');
@@ -380,24 +656,24 @@ function updateCartDisplay() {
     totalBox.style.display = 'none';
     cartCount.style.display = 'none';
   } else {
-    cartEl.innerHTML = items.map(name => `
+    cartEl.innerHTML = items.map(key => `
       <div class="cart-item">
         <div>
-          <strong>${name}</strong><br>
-          <small>${cart[name].price} FCFA × ${cart[name].qty}</small>
+          <strong>${cart[key].name}</strong><br>
+          <small>${cart[key].price.toLocaleString()} FCFA × ${cart[key].qty}</small>
         </div>
         <div style="display:flex;gap:10px;align-items:center">
           <div class="qty-controls">
-            <button class="qty-btn" onclick="updateQty('${name}', -1)">−</button>
-            <span style="font-weight:700;min-width:25px;text-align:center">${cart[name].qty}</span>
-            <button class="qty-btn" onclick="updateQty('${name}', 1)">+</button>
+            <button class="qty-btn" onclick="updateQty('${key}', -1)">−</button>
+            <span style="font-weight:700;min-width:25px;text-align:center">${cart[key].qty}</span>
+            <button class="qty-btn" onclick="updateQty('${key}', 1)">+</button>
           </div>
-          <button class="remove-btn" onclick="removeFromCart('${name}')">🗑️</button>
+          <button class="remove-btn" onclick="removeFromCart('${key}')">🗑️</button>
         </div>
       </div>
     `).join('');
     
-    const total = items.reduce((sum, name) => sum + (cart[name].price * cart[name].qty), 0);
+    const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
     document.getElementById('total').textContent = `Total: ${total.toLocaleString()} FCFA`;
     totalBox.style.display = 'block';
     
@@ -406,15 +682,18 @@ function updateCartDisplay() {
   }
 }
 
+// Ouvrir la modal
 function openModal() {
   document.getElementById('modal').style.display = 'flex';
   updateCartDisplay();
 }
 
+// Fermer la modal
 function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
+// Commander via WhatsApp
 function checkout() {
   const items = Object.keys(cart);
   if (items.length === 0) {
@@ -423,11 +702,12 @@ function checkout() {
   }
   
   let message = 'Bonjour, je veux commander:\n\n';
-  items.forEach(name => {
-    message += `• ${name} x${cart[name].qty} = ${(cart[name].price * cart[name].qty).toLocaleString()} FCFA\n`;
+  items.forEach(key => {
+    const item = cart[key];
+    message += `• ${item.name} x${item.qty} = ${(item.price * item.qty).toLocaleString()} FCFA\n`;
   });
   
-  const total = items.reduce((sum, name) => sum + (cart[name].price * cart[name].qty), 0);
+  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
   message += `\n💰 Total: ${total.toLocaleString()} FCFA\n`;
   message += `💳 Paiement: Mobile Money`;
   
@@ -435,14 +715,16 @@ function checkout() {
   window.open(url, '_blank');
 }
 
+// Filtrer les cartes
 function filterCards() {
   const query = document.getElementById('q').value.toLowerCase();
   document.querySelectorAll('.card').forEach(card => {
-    const name = card.dataset.name.toLowerCase();
+    const name = card.dataset.name;
     card.style.display = name.includes(query) ? 'block' : 'none';
   });
 }
 
+// Afficher le toast
 function showToast(message) {
   const toast = document.getElementById('toast');
   toast.textContent = message;
@@ -454,6 +736,9 @@ function showToast(message) {
 document.getElementById('modal').addEventListener('click', (e) => {
   if (e.target.id === 'modal') closeModal();
 });
+
+// Initialiser au chargement
+window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>
