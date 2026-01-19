@@ -3,742 +3,466 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FF Diamond Shop Official</title>
+  <title>FF Diamond Shop | Boutique Officielle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--primary:#00d4ff;--secondary:#0a0b10;--accent:#ffcc00;--card-bg:#161b22;--text:#fff}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Poppins,system-ui;background:var(--secondary);color:var(--text);margin:0;overflow-x:hidden;position:relative}
-    
-    .bg-shapes{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
-    .shape{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;animation:float 20s infinite ease-in-out}
-    .shape1{width:500px;height:500px;background:var(--primary);top:-200px;left:-200px;animation-delay:0s}
-    .shape2{width:400px;height:400px;background:var(--accent);bottom:-150px;right:-150px;animation-delay:5s}
-    .shape3{width:350px;height:350px;background:#ff00ff;top:50%;left:50%;animation-delay:10s}
-    .shape4{width:300px;height:300px;background:#00ff88;top:20%;right:10%;animation-delay:15s}
-    
-    @keyframes float{
-      0%,100%{transform:translate(0,0) scale(1)}
-      25%{transform:translate(50px,-50px) scale(1.1)}
-      50%{transform:translate(-30px,30px) scale(0.9)}
-      75%{transform:translate(40px,20px) scale(1.05)}
+    :root {
+      --primary: #00d4ff;
+      --secondary: #0a0b10;
+      --accent: #ffcc00;
+      --card-bg: #161b22;
+      --text: #fff;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    .particles{position:fixed;inset:0;z-index:0;pointer-events:none}
-    .particle{position:absolute;width:3px;height:3px;background:var(--primary);border-radius:50%;animation:rise 15s infinite linear;opacity:.3}
-    
-    @keyframes rise{
-      0%{transform:translateY(0) translateX(0);opacity:0}
-      10%{opacity:.3}
-      90%{opacity:.3}
-      100%{transform:translateY(-100vh) translateX(50px);opacity:0}
+    body {
+      font-family: 'Poppins', system-ui;
+      background: var(--secondary);
+      color: var(--text);
+      margin: 0;
+      overflow-x: hidden;
     }
-    
-    .content{position:relative;z-index:1}
-    
-    header{position:sticky;top:0;z-index:9;background:rgba(15,20,27,.95);border-bottom:1px solid #30363d;backdrop-filter:blur(10px);animation:slideDown .5s ease-out}
-    
-    @keyframes slideDown{
-      from{transform:translateY(-100%);opacity:0}
-      to{transform:translateY(0);opacity:1}
+
+    /* Arrière-plan animé */
+    .bg-shapes { position: fixed; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+    .shape { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: float 20s infinite ease-in-out; }
+    .shape1 { width: 500px; height: 500px; background: var(--primary); top: -200px; left: -200px; }
+    .shape2 { width: 400px; height: 400px; background: var(--accent); bottom: -150px; right: -150px; animation-delay: 5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -40px) scale(1.1); }
     }
-    
-    .nav{max-width:1100px;margin:auto;padding:15px 20px;display:flex;gap:15px;align-items:center;justify-content:space-between}
-    .brand{font-weight:800;font-size:20px;background:linear-gradient(135deg,#00d4ff,#0082ff,#00d4ff);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    
-    @keyframes gradientShift{
-      0%,100%{background-position:0% 50%}
-      50%{background-position:100% 50%}
+
+    .content { position: relative; z-index: 1; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 20, 27, 0.95);
+      border-bottom: 1px solid #30363d;
+      backdrop-filter: blur(10px);
     }
-    
-    .actions{display:flex;gap:10px;align-items:center}
-    .btn{background:linear-gradient(45deg,#0082ff,#00d4ff);border:none;color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:600;transition:all .3s;position:relative;overflow:hidden}
-    .btn::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,.3),transparent);transform:translateX(-100%);transition:.5s}
-    .btn:hover::before{transform:translateX(100%)}
-    .btn:hover{transform:scale(1.05) translateY(-2px);box-shadow:0 8px 25px rgba(0,212,255,.5)}
-    .btn:active{transform:scale(0.98)}
-    .ghost{background:transparent;border:1px solid #30363d}
-    .ghost:hover{border-color:var(--primary);background:rgba(0,212,255,.1)}
-    
-    .container{max-width:1100px;margin:auto;padding:40px 20px;position:relative;z-index:1}
-    .hero{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;animation:fadeInUp 1s ease-out}
-    
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(30px)}
-      to{opacity:1;transform:translateY(0)}
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    
-    .hero h1{font-size:42px;margin:0;background:linear-gradient(135deg,#00d4ff,#0082ff,#00ff88);background-size:200% 200%;animation:gradientShift 4s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 40px rgba(0,212,255,.3)}
-    .hero p{animation:fadeInUp 1s ease-out .2s backwards}
-    .hero img{animation:floatImage 3s ease-in-out infinite;filter:drop-shadow(0 10px 30px rgba(0,212,255,.4))}
-    
-    @keyframes floatImage{
-      0%,100%{transform:translateY(0px)}
-      50%{transform:translateY(-20px)}
+
+    .brand {
+      font-weight: 800;
+      font-size: 20px;
+      background: linear-gradient(135deg, #00d4ff, #0082ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    
-    .search{display:flex;gap:10px;margin-top:20px;animation:fadeInUp 1s ease-out .4s backwards}
-    .search input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid #30363d;background:rgba(15,20,27,.8);color:#fff;backdrop-filter:blur(10px);transition:all .3s}
-    .search input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 20px rgba(0,212,255,.3);transform:scale(1.02)}
-    
-    .section-title{text-align:center;margin:40px 0 30px;font-size:32px;background:linear-gradient(135deg,#fff,#00d4ff,#fff);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;position:relative;z-index:1}
-    .card{background:rgba(22,27,34,.9);border-radius:20px;padding:20px;text-align:center;border:1px solid #30363d;transition:all .4s;position:relative;backdrop-filter:blur(10px);animation:fadeInUp 1s ease-out backwards}
-    .card:nth-child(1){animation-delay:.1s}
-    .card:nth-child(2){animation-delay:.2s}
-    .card:nth-child(3){animation-delay:.3s}
-    .card:nth-child(4){animation-delay:.4s}
-    .card:nth-child(5){animation-delay:.5s}
-    .card:nth-child(6){animation-delay:.6s}
-    .card:nth-child(7){animation-delay:.7s}
-    .card:nth-child(8){animation-delay:.8s}
-    .card:hover{transform:translateY(-12px) scale(1.03);border-color:var(--primary);box-shadow:0 15px 40px rgba(0,212,255,.3),0 0 60px rgba(0,212,255,.2)}
-    .card::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,transparent,rgba(0,212,255,.1));opacity:0;transition:.4s}
-    .card:hover::before{opacity:1}
-    
-    .product-img{width:100%;height:170px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 5px 15px rgba(0,212,255,.3));transition:all .4s}
-    .card:hover .product-img{transform:scale(1.1) rotate(5deg);filter:drop-shadow(0 10px 25px rgba(0,212,255,.5))}
-    
-    .price{color:var(--accent);font-weight:800;font-size:24px;margin:10px 0;text-shadow:0 0 20px rgba(255,204,0,.5);animation:pulse 2s ease-in-out infinite}
-    
-    @keyframes pulse{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.05)}
+
+    .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 40px;
     }
-    
-    .badge{position:absolute;top:12px;right:12px;background:var(--accent);color:#000;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;animation:bounce 2s ease-in-out infinite;box-shadow:0 0 20px rgba(255,204,0,.6)}
-    
-    @keyframes bounce{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-5px)}
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      background: linear-gradient(135deg, #fff, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
     }
-    
-    .subscription-card{background:linear-gradient(135deg,rgba(130,0,255,.2),rgba(0,212,255,.2));border:2px solid #8200ff}
-    .subscription-card:hover{border-color:#00d4ff}
-    
-    .toast{position:fixed;bottom:20px;right:20px;background:linear-gradient(45deg,#0082ff,#00d4ff);color:#fff;padding:14px 18px;border-radius:14px;display:none;font-weight:600;box-shadow:0 5px 20px rgba(0,212,255,.5);animation:slideInRight .4s ease-out;z-index:999}
-    
-    @keyframes slideInRight{
-      from{transform:translateX(400px);opacity:0}
-      to{transform:translateX(0);opacity:1}
+
+    .hero img {
+      width: 100%;
+      max-width: 400px;
+      filter: drop-shadow(0 10px 30px rgba(0, 212, 255, 0.4));
+      border-radius: 20px;
     }
-    
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);z-index:999;animation:fadeIn .3s ease-out}
-    
-    @keyframes fadeIn{
-      from{opacity:0}
-      to{opacity:1}
+
+    /* Grille de produits */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
     }
-    
-    .modal .box{background:rgba(15,20,27,.98);border:2px solid var(--primary);border-radius:18px;padding:30px;width:min(92%,500px);max-height:80vh;overflow-y:auto;animation:scaleIn .4s ease-out;box-shadow:0 20px 60px rgba(0,212,255,.4)}
-    
-    @keyframes scaleIn{
-      from{transform:scale(0.8);opacity:0}
-      to{transform:scale(1);opacity:1}
+
+    .card {
+      background: rgba(22, 27, 34, 0.9);
+      border: 1px solid #30363d;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
     }
-    
-    .cart-item{background:rgba(22,27,34,.9);padding:15px;border-radius:12px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;border:1px solid #30363d;transition:all .3s;animation:slideInLeft .3s ease-out backwards}
-    .cart-item:nth-child(1){animation-delay:.05s}
-    .cart-item:nth-child(2){animation-delay:.1s}
-    .cart-item:nth-child(3){animation-delay:.15s}
-    .cart-item:nth-child(4){animation-delay:.2s}
-    .cart-item:nth-child(5){animation-delay:.25s}
-    .cart-item:hover{border-color:var(--primary);transform:translateX(5px);box-shadow:0 5px 20px rgba(0,212,255,.2)}
-    
-    @keyframes slideInLeft{
-      from{transform:translateX(-50px);opacity:0}
-      to{transform:translateX(0);opacity:1}
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
     }
+
+    .product-img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 15px; }
     
-    .qty-controls{display:flex;gap:8px;align-items:center}
-    .qty-btn{background:var(--primary);border:none;color:#000;width:30px;height:30px;border-radius:50%;cursor:pointer;font-weight:800;font-size:16px;transition:all .2s}
-    .qty-btn:hover{transform:scale(1.2) rotate(90deg);box-shadow:0 0 15px var(--primary)}
-    .qty-btn:active{transform:scale(0.9)}
-    
-    .remove-btn{background:#ff4444;color:#fff;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;transition:all .3s}
-    .remove-btn:hover{background:#cc0000;transform:scale(1.1)}
-    
-    .total-box{background:linear-gradient(135deg,#0082ff,#00d4ff,#00ff88);background-size:200% 200%;animation:gradientShift 3s ease infinite;padding:20px;border-radius:12px;margin:20px 0;text-align:center;box-shadow:0 10px 30px rgba(0,212,255,.4)}
-    .total-box h3{margin:0;font-size:28px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.5)}
-    
-    .empty-cart{text-align:center;padding:40px;opacity:.6;animation:fadeIn 1s ease-out}
-    footer{opacity:.6;text-align:center;padding:40px;animation:fadeInUp 1s ease-out 1s backwards}
-    details{background:rgba(22,27,34,.9);padding:15px;border-radius:12px;margin:10px 0;border:1px solid #30363d;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
-    details:hover{border-color:var(--primary);box-shadow:0 5px 20px rgba(0,212,255,.2)}
-    summary{font-weight:600;cursor:pointer;transition:.3s}
-    details[open] summary{color:var(--primary)}
-    
-    .cart-badge{background:#ff4444;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;position:relative;top:-2px;animation:ping 1s ease-in-out infinite}
-    
-    @keyframes ping{
-      0%{box-shadow:0 0 0 0 rgba(255,68,68,.7)}
-      70%{box-shadow:0 0 0 10px rgba(255,68,68,0)}
-      100%{box-shadow:0 0 0 0 rgba(255,68,68,0)}
+    .price {
+      display: block;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 10px 0;
     }
-    
-    h2{background:linear-gradient(135deg,#fff,#00d4ff,#fff);background-size:200% 200%;animation:gradientShift 3s ease infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    
-    ::-webkit-scrollbar{width:10px}
-    ::-webkit-scrollbar-track{background:var(--secondary)}
-    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#0082ff,#00d4ff);border-radius:10px}
-    ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#00d4ff,#00ff88)}
-    
-    @media(max-width:768px){
-      .hero{grid-template-columns:1fr}
-      .hero img{max-width:200px;margin:auto}
-      .hero h1{font-size:32px}
+
+    .btn {
+      background: linear-gradient(45deg, #0082ff, #00d4ff);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .btn:hover { opacity: 0.9; transform: scale(1.02); }
+    .btn.ghost { background: transparent; border: 1px solid #30363d; margin-top: 10px; }
+    .btn.danger { background: #ff4444; margin-top: 10px; font-size: 12px; padding: 5px; }
+
+    /* Modal et Panier */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-box {
+      background: #0f141b;
+      width: min(95%, 500px);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid var(--primary);
+    }
+
+    .form-group { margin-bottom: 15px; text-align: left; }
+    .form-group label { display: block; font-size: 14px; color: var(--primary); margin-bottom: 5px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #161b22;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--primary);
+    }
+
+    /* LOADER 30 SECONDES */
+    .loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0a0b10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .loader-container {
+      width: 280px;
+      height: 12px;
+      background: #161b22;
+      border-radius: 10px;
+      border: 1px solid var(--primary);
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .loader-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #00ff88);
+      transition: width 0.1s linear;
+    }
+
+    #loaderPercent { font-size: 24px; font-weight: 800; color: var(--primary); }
+    #loaderStatus { color: #fff; opacity: 0.7; font-size: 14px; margin-top: 10px; text-align: center; padding: 0 20px;}
+
+    .cart-badge {
+        background: #ff4444;
+        font-size: 12px;
+        padding: 2px 7px;
+        border-radius: 50%;
+        margin-left: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero img { margin: auto; }
     }
   </style>
 </head>
 <body>
+
 <div class="bg-shapes">
   <div class="shape shape1"></div>
   <div class="shape shape2"></div>
-  <div class="shape shape3"></div>
-  <div class="shape shape4"></div>
 </div>
 
-<div class="particles" id="particles"></div>
+<div class="loader-overlay" id="loaderOverlay">
+  <div style="font-weight: 800; color: #fff; letter-spacing: 2px;">TRAITEMENT SÉCURISÉ</div>
+  <div class="loader-container">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+  <div id="loaderPercent">0%</div>
+  <div id="loaderStatus">Préparation de la commande...</div>
+</div>
 
 <div class="content">
-<header>
-  <div class="nav">
-    <div class="brand">💎 FF DIAMOND SHOP</div>
-    <div class="actions">
-      <button class="btn" onclick="openModal()">🛒 Panier <span id="cartCount" class="cart-badge" style="display:none">0</span></button>
+  <header>
+    <div class="nav">
+      <div class="brand">💎 FF DIAMOND SHOP</div>
+      <button class="btn" style="width: auto;" onclick="openModal()">🛒 Panier <span id="cartCount" class="cart-badge" style="display:none">0</span></button>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="container hero">
-  <div>
-    <h1>Diamants Free Fire au meilleur prix</h1>
-    <p>Livraison rapide par ID Player • Paiement <b>Mobile Money uniquement</b></p>
-    <div class="search">
-      <input id="q" placeholder="Rechercher un pack…" oninput="filterCards()">
-      <button class="btn" onclick="filterCards()">🔍 Rechercher</button>
+  <section class="container hero">
+    <div>
+      <h1>Recharge Directe Free Fire</h1>
+      <p>Paiement sécurisé via <b>Mobile Money</b>. Livraison instantanée sur votre ID Player.</p>
     </div>
-  </div>
-  <img src="https://i.imgur.com/6oK7Z8F.png" alt="FF" />
-</section>
+    <img src="https://i.ibb.co/ZppWvQrc/531701642-748394264629785-3895236103836514434-n-jpg-stp-dst-jpg-s720x720-tt6-nc-cat-109-ccb-1-7-nc.jpg" alt="FF Logo">
+  </section>
 
-<main class="container">
-  <h2 class="section-title">💎 Packs Diamants</h2>
-  <div class="grid" id="diamondGrid"></div>
+  <main class="container">
+    <h2 style="margin-bottom: 25px;">💎 Nos Packs Diamants</h2>
+    <div class="grid" id="diamondGrid"></div>
 
-  <h2 class="section-title">⭐ Abonnements</h2>
-  <div class="grid" id="subscriptionGrid"></div>
-</main>
+    <h2 style="margin: 50px 0 25px;">⭐ Abonnements</h2>
+    <div class="grid" id="subscriptionGrid"></div>
+  </main>
 
-<section class="container">
-  <h2>💳 Moyens de paiement</h2>
-  <p>✅ <b>Mobile Money (MTN & Orange Money)</b> uniquement — aucun autre moyen accepté.</p>
-</section>
-
-<section class="container">
-  <h2>❓ FAQ</h2>
-  <details>
-    <summary>Comment payer ?</summary>
-    <p>Après la commande WhatsApp, nous t'envoyons le numéro Mobile Money (MTN ou Orange).</p>
-  </details>
-  <details>
-    <summary>Délai de livraison ?</summary>
-    <p>Instantanée après confirmation du paiement (2-5 minutes max).</p>
-  </details>
-  <details>
-    <summary>Besoin de quoi pour commander ?</summary>
-    <p>Ton ID Player Free Fire uniquement. Tu le trouves dans les paramètres du jeu.</p>
-  </details>
-</section>
-
-<footer>&copy; 2026 Diamond Shop FF — Paiement Mobile Money uniquement</footer>
+  <footer style="text-align: center; padding: 40px; opacity: 0.4; font-size: 12px;">
+    &copy; 2026 FF Diamond Shop - Service Officiel de Recharge
+  </footer>
 </div>
 
-<div class="toast" id="toast">✅ Ajouté au panier</div>
-
 <div class="modal" id="modal">
-  <div class="box">
-    <h2 style="margin-top:0">🛒 Votre Panier</h2>
-    <div id="cart"></div>
-    <div class="total-box" id="totalBox" style="display:none">
-      <h3 id="total">Total: 0 FCFA</h3>
+  <div class="modal-box">
+    <h2 style="margin-bottom: 20px;">Votre Panier</h2>
+    <div id="cartItems"></div>
+    
+    <div id="formSection" style="display:none; margin-top: 20px; border-top: 1px solid #333; padding-top: 20px;">
+      <h3 style="margin-bottom: 15px; font-size: 16px; color: var(--accent);">Informations de livraison :</h3>
+      <div class="form-group">
+        <label>Prénom & Nom *</label>
+        <input type="text" id="fullName" placeholder="Ex: Jean Dupont">
+      </div>
+      <div class="form-group">
+        <label>Pays *</label>
+        <select id="country">
+          <option value="">Sélectionnez votre pays</option>
+          <option value="Cameroun">Cameroun</option>
+          <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+          <option value="Sénégal">Sénégal</option>
+          <option value="Bénin">Bénin</option>
+          <option value="Gabon">Gabon</option>
+          <option value="Mali">Mali</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>ID Player Free Fire *</label>
+        <input type="number" id="idPlayer" placeholder="Ex: 102938475">
+      </div>
+
+      <div id="totalPrice" style="font-size: 22px; font-weight: 800; color: var(--accent); margin: 20px 0; text-align: right; border-top: 1px dashed #444; padding-top: 10px;"></div>
+      
+      <button class="btn" onclick="startLoading()">✅ CONFIRMER ET PAYER TOUT</button>
     </div>
-    <div style="display:flex;gap:10px;margin-top:20px">
-      <button class="btn" onclick="checkout()" style="flex:1">📱 Commander via WhatsApp</button>
-      <button class="btn ghost" onclick="closeModal()">Fermer</button>
-    </div>
+    
+    <button class="btn ghost" onclick="closeModal()">➕ Continuer les achats</button>
   </div>
 </div>
 
 <script>
-// Base de données des produits
 const products = {
   diamonds: [
-    { id: 1, name: '110 Diamants', diamonds: 110, price: 650, badge: 'PROMO' },
-    { id: 2, name: '231 Diamants', diamonds: 231, price: 1400, badge: null },
-    { id: 3, name: '583 Diamants', diamonds: 583, price: 3500, badge: 'TOP VENTE' },
-    { id: 4, name: '1188 Diamants', diamonds: 1188, price: 7000, badge: null },
-    { id: 5, name: '2420 Diamants', diamonds: 2420, price: 14500, badge: null },
-    { id: 6, name: '5600 Diamants', diamonds: 5600, price: 33500, badge: 'BEST VALUE' }
+    { id: 1, name: '110 Diamants', price: 700 },
+    { id: 2, name: '231 Diamants', price: 1700 },
+    { id: 3, name: '583 Diamants', price: 3500 },
+    { id: 4, name: '1188 Diamants', price: 6500 },
+    { id: 5, name: '2420 Diamants', price: 14500 }
   ],
-  subscriptions: [
-    { id: 7, name: 'Abonnement Hebdomadaire', duration: '7 jours', price: 1700, badge: null },
-    { id: 8, name: 'Abonnement Mensuel', duration: '30 jours', price: 7000, badge: 'POPULAIRE' }
+  subs: [
+    { id: 10, name: 'Abo Hebdomadaire', price: 1700 },
+    { id: 11, name: 'Abo Mensuel', price: 7000 }
   ]
 };
 
 let cart = {};
 
-// Initialisation
-function init() {
-  createParticles();
-  loadProducts();
-  loadCart();
-}
-
-// Génération des particules
-function createParticles() {
-  const container = document.getElementById('particles');
-  for(let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 15 + 's';
-    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-    container.appendChild(particle);
-  }
-}
-
-// Charger les produits depuis la "base de données"
-function loadProducts() {
-  const diamondGrid = document.getElementById('diamondGrid');
-  const subscriptionGrid = document.getElementById('subscriptionGrid');
-  
-  // Charger les diamants
-  diamondGrid.innerHTML = products.diamonds.map((product, index) => `
-    <div class="card" data-name="${product.name.toLowerCase()}" style="animation-delay: ${index * 0.1}s">
-      ${product.badge ? `<span class="badge">${product.badge}</span>` : ''}
-      <img class="product-img" src="https://i.ibb.co/cSn63Jvc/495077066-608102602304064-8697694855776305520-n-jpg-nc-cat-101-ccb-1-7-nc-sid-9f807c-nc-eui2-Ae-FF.jpg" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p class="price">${product.price.toLocaleString()} FCFA</p>
-      <button class="btn" onclick="addToCart(${product.id}, 'diamond')" style="width:100%">➕ Ajouter au panier</button>
+function loadUI() {
+  const dGrid = document.getElementById('diamondGrid');
+  dGrid.innerHTML = products.diamonds.map(p => `
+    <div class="card">
+      <img class="product-img" src="https://i.ibb.co/cSn63Jvc/495077066-608102602304064-8697694855776305520-n-jpg-nc-cat-101-ccb-1-7-nc-sid-9f807c-nc-eui2-Ae-FF.jpg">
+      <h3>${p.name}</h3>
+      <span class="price">${p.price} FCFA</span>
+      <button class="btn" onclick="addToCart(${p.id}, 'diamonds')">Ajouter au panier</button>
     </div>
   `).join('');
-  
-  // Charger les abonnements
-  subscriptionGrid.innerHTML = products.subscriptions.map((product, index) => {
-    const imgUrl = index === 0 
-      ? 'https://i.ibb.co/ZzfJpR6x/613650220-1604122014237794-6655977740986373332-n-jpg-stp-dst-jpg-p480x480-tt6-nc-cat-101-ccb-1-7-n.jpg'
-      : 'https://i.ibb.co/sdXr0TyT/614184102-1560285791686856-6336493226340822985-n-jpg-stp-dst-jpg-p480x480-tt6-nc-cat-102-ccb-1-7-n.jpg';
-    
-    return `
-    <div class="card subscription-card" data-name="${product.name.toLowerCase()}" style="animation-delay: ${(index + 6) * 0.1}s">
-      ${product.badge ? `<span class="badge">${product.badge}</span>` : ''}
-      <img class="product-img" src="${imgUrl}" alt="${product.name}">
-      <h3>${product.name}</h3>
-      <p style="color:#00d4ff;font-weight:600;margin:5px 0">${product.duration}</p>
-      <p class="price">${product.price.toLocaleString()} FCFA</p>
-      <button class="btn" onclick="addToCart(${product.id}, 'subscription')" style="width:100%">➕ Ajouter au panier</button>
+
+  const sGrid = document.getElementById('subscriptionGrid');
+  sGrid.innerHTML = products.subs.map(p => `
+    <div class="card">
+      <img class="product-img" src="https://i.ibb.co/sdXr0TyT/614184102-1560285791686856-6336493226340822985-n-jpg-stp-dst-jpg-p480x480-tt6-nc-cat-102-ccb-1-7-n.jpg">
+      <h3>${p.name}</h3>
+      <span class="price">${p.price} FCFA</span>
+      <button class="btn" onclick="addToCart(${p.id}, 'subs')">Ajouter au panier</button>
     </div>
-    `;
-  }).join('');
+  `).join('');
 }
 
-// Charger le panier depuis localStorage
-function loadCart() {
-  const saved = localStorage.getItem('ffDiamondCart');
-  if (saved) {
-    cart = JSON.parse(saved);
-    updateCartDisplay();
-  }
-}
-
-// Sauvegarder le panier dans localStorage
-function saveCart() {
-  localStorage.setItem('ffDiamondCart', JSON.stringify(cart));
-}
-
-// Ajouter au panier
-function addToCart(productId, type) {
-  const product = type === 'diamond' 
-    ? products.diamonds.find(p => p.id === productId)
-    : products.subscriptions.find(p => p.id === productId);
-  
-  if (!product) return;
-  
-  const key = `${type}_${productId}`;
-  
-  if (cart[key]) {
-    cart[key].qty++;
+function addToCart(id, category) {
+  const p = products[category].find(x => x.id === id);
+  if (cart[id]) {
+    cart[id].qty++;
   } else {
-    cart[key] = {
-      id: productId,
-      type: type,
-      name: product.name,
-      price: product.price,
-      qty: 1
-    };
+    cart[id] = { ...p, qty: 1 };
   }
-  
-  saveCart();
-  updateCartDisplay();
-  showToast('✅ ' + product.name + ' ajouté au panier');
+  updateCart();
+  openModal(); // Ouvre le panier pour montrer qu'il est ajouté, mais on peut en ajouter d'autres
 }
 
-// Retirer du panier
-function removeFromCart(key) {
-  delete cart[key];
-  saveCart();
-  updateCartDisplay();
-  showToast('🗑️ Article retiré du panier');
+function removeFromCart(id) {
+  delete cart[id];
+  updateCart();
 }
 
-// Mettre à jour la quantité
-function updateQty(key, delta) {
-  if (cart[key]) {
-    cart[key].qty += delta;
-    if (cart[key].qty <= 0) {
-      removeFromCart(key);
-    } else {
-      saveCart();
-      updateCartDisplay();
-    }
-  }
-}
-
-// Afficher le panier
-function updateCartDisplay() {
-  const cartEl = document.getElementById('cart');
-  const totalBox = document.getElementById('totalBox');
-  const cartCount = document.getElementById('cartCount');
-  const userInfoSection = document.getElementById('userInfoSection');
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  
-  const items = Object.keys(cart);
-  const totalItems = items.reduce((sum, key) => sum + cart[key].qty, 0);
+function updateCart() {
+  const itemsDiv = document.getElementById('cartItems');
+  const items = Object.values(cart);
+  const badge = document.getElementById('cartCount');
   
   if (items.length === 0) {
-    cartEl.innerHTML = '<div class="empty-cart">🛒 Votre panier est vide</div>';
-    totalBox.style.display = 'none';
-    cartCount.style.display = 'none';
-    userInfoSection.style.display = 'none';
+    itemsDiv.innerHTML = "<p style='text-align:center; opacity:0.5; padding: 20px;'>Votre panier est vide.</p>";
+    document.getElementById('formSection').style.display = "none";
+    badge.style.display = "none";
   } else {
-    cartEl.innerHTML = items.map(key => `
+    itemsDiv.innerHTML = items.map(i => `
       <div class="cart-item">
         <div>
-          <strong>${cart[key].name}</strong><br>
-          <small>${cart[key].price.toLocaleString()} FCFA × ${cart[key].qty}</small>
+          <b style="color:white">${i.name}</b><br>
+          <small>${i.price} FCFA x ${i.qty}</small>
         </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <div class="qty-controls">
-            <button class="qty-btn" onclick="updateQty('${key}', -1)">−</button>
-            <span style="font-weight:700;min-width:25px;text-align:center">${cart[key].qty}</span>
-            <button class="qty-btn" onclick="updateQty('${key}', 1)">+</button>
-          </div>
-          <button class="remove-btn" onclick="removeFromCart('${key}')">🗑️</button>
+        <div style="text-align:right">
+          <div style="font-weight:bold; color:var(--primary)">${i.price * i.qty} FCFA</div>
+          <button class="btn danger" onclick="removeFromCart(${i.id})">Supprimer</button>
         </div>
       </div>
     `).join('');
     
-    const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
-    document.getElementById('total').textContent = `Total: ${total.toLocaleString()} FCFA`;
-    totalBox.style.display = 'block';
-    userInfoSection.style.display = 'block';
+    let total = items.reduce((sum, i) => sum + (i.price * i.qty), 0);
+    document.getElementById('totalPrice').innerText = "TOTAL À PAYER : " + total + " FCFA";
+    document.getElementById('formSection').style.display = "block";
     
-    cartCount.textContent = totalItems;
-    cartCount.style.display = 'inline-flex';
+    let totalQty = items.reduce((sum, i) => sum + i.qty, 0);
+    badge.innerText = totalQty;
+    badge.style.display = "inline";
   }
 }
 
-// Ouvrir la modal
-function openModal() {
-  document.getElementById('modal').style.display = 'flex';
-  updateCartDisplay();
-}
+function openModal() { document.getElementById('modal').style.display = "flex"; }
+function closeModal() { document.getElementById('modal').style.display = "none"; }
 
-// Fermer la modal
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// Valider le formulaire
-function validateForm() {
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
+function startLoading() {
+  const name = document.getElementById('fullName').value.trim();
   const country = document.getElementById('country').value;
-  const playerId = document.getElementById('playerId').value.trim();
-  
-  if (!firstName) {
-    showToast('⚠️ Veuillez entrer votre prénom');
-    return false;
-  }
-  
-  if (!lastName) {
-    showToast('⚠️ Veuillez entrer votre nom');
-    return false;
-  }
-  
-  if (!country) {
-    showToast('⚠️ Veuillez sélectionner votre pays');
-    return false;
-  }
-  
-  if (!playerId) {
-    showToast('⚠️ Veuillez entrer votre ID Player');
-    return false;
-  }
-  
-  return true;
-}
+  const idPlayer = document.getElementById('idPlayer').value.trim();
 
-// Commander via WhatsApp ou Paiement Direct
-function checkout() {
-  const items = Object.keys(cart);
-  if (items.length === 0) {
-    showToast('⚠️ Votre panier est vide');
+  if (!name || !country || !idPlayer) {
+    alert("Veuillez remplir toutes vos informations !");
     return;
   }
-  
-  // Valider le formulaire
-  if (!validateForm()) {
-    return;
-  }
-  
-  // Afficher le choix de paiement
-  showPaymentChoice();
-}
 
-// Afficher le choix entre WhatsApp et Paiement Direct
-function showPaymentChoice() {
-  const choice = confirm(
-    '💳 CHOISISSEZ VOTRE MODE DE PAIEMENT\n\n' +
-    '✅ Cliquez OK pour PAYER MAINTENANT avec Mobile Money\n' +
-    '❌ Cliquez ANNULER pour commander via WhatsApp'
-  );
+  const overlay = document.getElementById('loaderOverlay');
+  const bar = document.getElementById('loaderBar');
+  const percent = document.getElementById('loaderPercent');
+  const status = document.getElementById('loaderStatus');
   
-  if (choice) {
-    // Paiement direct
-    proceedToPayment();
-  } else {
-    // WhatsApp
-    sendToWhatsApp();
-  }
-}
+  overlay.style.display = "flex";
+  
+  let progress = 0;
+  const duration = 30000; // 30 SECONDES
+  const step = 100; 
+  const increment = (step / duration) * 100;
 
-// Procéder au paiement direct
-function proceedToPayment() {
-  const items = Object.keys(cart);
-  
-  // Récupérer les informations du client
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const country = document.getElementById('country').value;
-  const playerId = document.getElementById('playerId').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  
-  // Préparer les données de commande
-  const orderItems = items.map(key => ({
-    name: cart[key].name,
-    qty: cart[key].qty,
-    price: cart[key].price
-  }));
-  
-  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
-  
-  const orderData = {
-    customer: {
-      firstName,
-      lastName,
-      country,
-      playerId,
-      phone
-    },
-    items: orderItems,
-    total
-  };
-  
-  // Sauvegarder dans localStorage pour le site de paiement
-  localStorage.setItem('pendingOrder', JSON.stringify(orderData));
-  
-  // Ouvrir le site de paiement
-  // IMPORTANT: Remplacez par l'URL réelle de votre site de paiement
-  window.open('payment.html', '_blank');
-  
-  showToast('✅ Redirection vers le paiement...');
-}
+  const timer = setInterval(() => {
+    progress += increment;
+    if (progress > 100) progress = 100;
+    
+    bar.style.width = progress + "%";
+    percent.innerText = Math.floor(progress) + "%";
 
-// Envoyer via WhatsApp
-function sendToWhatsApp() {
-  const items = Object.keys(cart);
-  
-  // Récupérer les informations du client
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const country = document.getElementById('country').value;
-  const playerId = document.getElementById('playerId').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  
-  // Construire le message WhatsApp
-  let message = '🎮 *NOUVELLE COMMANDE DIAMOND SHOP*\n\n';
-  message += '👤 *INFORMATIONS CLIENT*\n';
-  message += `Nom complet: ${firstName} ${lastName}\n`;
-  message += `Pays: ${country}\n`;
-  message += `ID Player: ${playerId}\n`;
-  if (phone) {
-    message += `Téléphone: ${phone}\n`;
-  }
-  message += '\n📦 *COMMANDE*\n';
-  
-  items.forEach(key => {
-    const item = cart[key];
-    message += `• ${item.name} x${item.qty} = ${(item.price * item.qty).toLocaleString()} FCFA\n`;
-  });
-  
-  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
-  message += `\n💰 *TOTAL: ${total.toLocaleString()} FCFA*\n`;
-  message += `\n💳 Mode de paiement: Mobile Money`;
-  
-  const url = 'https://wa.me/237681246628?text=' + encodeURIComponent(message);
-  window.open(url, '_blank');
-}
+    if(progress < 25) status.innerText = "Analyse du panier multi-articles...";
+    else if(progress < 50) status.innerText = "Vérification de l'ID : " + idPlayer;
+    else if(progress < 75) status.innerText = "Sécurisation de la transaction...";
+    else status.innerText = "Génération du bon de commande final...";
 
-// Filtrer les cartes
-function filterCards() {
-  const query = document.getElementById('q').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card => {
-    const name = card.dataset.name;
-    card.style.display = name.includes(query) ? 'block' : 'none';
-  });
-}
-
-// Afficher le toast
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.style.display = 'block';
-  setTimeout(() => toast.style.display = 'none', 2000);
-}
-
-// Fermer la modal en cliquant à l'extérieur
-document.getElementById('modal').addEventListener('click', (e) => {
-  if (e.target.id === 'modal') closeModal();
-});
-
-// Initialiser au chargement
-window.addEventListener('DOMContentLoaded', init);
-</script>
-</body>
-</html>
-    cart[key].qty += delta;
-    if (cart[key].qty <= 0) {
-      removeFromCart(key);
-    } else {
-      saveCart();
-      updateCartDisplay();
+    if (progress >= 100) {
+      clearInterval(timer);
+      finishOrder(name, country, idPlayer);
     }
-  }
+  }, step);
 }
 
-// Afficher le panier
-function updateCartDisplay() {
-  const cartEl = document.getElementById('cart');
-  const totalBox = document.getElementById('totalBox');
-  const cartCount = document.getElementById('cartCount');
+function finishOrder(name, country, idPlayer) {
+  const items = Object.values(cart);
+  let total = items.reduce((sum, i) => sum + (i.price * i.qty), 0);
   
-  const items = Object.keys(cart);
-  const totalItems = items.reduce((sum, key) => sum + cart[key].qty, 0);
-  
-  if (items.length === 0) {
-    cartEl.innerHTML = '<div class="empty-cart">🛒 Votre panier est vide</div>';
-    totalBox.style.display = 'none';
-    cartCount.style.display = 'none';
-  } else {
-    cartEl.innerHTML = items.map(key => `
-      <div class="cart-item">
-        <div>
-          <strong>${cart[key].name}</strong><br>
-          <small>${cart[key].price.toLocaleString()} FCFA × ${cart[key].qty}</small>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center">
-          <div class="qty-controls">
-            <button class="qty-btn" onclick="updateQty('${key}', -1)">−</button>
-            <span style="font-weight:700;min-width:25px;text-align:center">${cart[key].qty}</span>
-            <button class="qty-btn" onclick="updateQty('${key}', 1)">+</button>
-          </div>
-          <button class="remove-btn" onclick="removeFromCart('${key}')">🗑️</button>
-        </div>
-      </div>
-    `).join('');
-    
-    const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
-    document.getElementById('total').textContent = `Total: ${total.toLocaleString()} FCFA`;
-    totalBox.style.display = 'block';
-    
-    cartCount.textContent = totalItems;
-    cartCount.style.display = 'inline-flex';
-  }
-}
-
-// Ouvrir la modal
-function openModal() {
-  document.getElementById('modal').style.display = 'flex';
-  updateCartDisplay();
-}
-
-// Fermer la modal
-function closeModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// Commander via WhatsApp
-function checkout() {
-  const items = Object.keys(cart);
-  if (items.length === 0) {
-    showToast('⚠️ Votre panier est vide');
-    return;
-  }
-  
-  let message = 'Bonjour, je veux commander:\n\n';
-  items.forEach(key => {
-    const item = cart[key];
-    message += `• ${item.name} x${item.qty} = ${(item.price * item.qty).toLocaleString()} FCFA\n`;
+  let text = `🎮 *COMMANDE GROUPÉE - FF SHOP*\n\n`;
+  text += `👤 *Client:* ${name}\n`;
+  text += `🌍 *Pays:* ${country}\n`;
+  text += `🆔 *ID Player:* ${idPlayer}\n\n`;
+  text += `📦 *CONTENU DU PANIER :*\n`;
+  items.forEach(i => { 
+    text += `- ${i.name} (x${i.qty}) = ${i.price * i.qty} FCFA\n`; 
   });
-  
-  const total = items.reduce((sum, key) => sum + (cart[key].price * cart[key].qty), 0);
-  message += `\n💰 Total: ${total.toLocaleString()} FCFA\n`;
-  message += `💳 Paiement: Mobile Money`;
-  
-  const url = 'https://wa.me/237681246628?text=' + encodeURIComponent(message);
-  window.open(url, '_blank');
+  text += `\n💰 *MONTANT TOTAL : ${total} FCFA*\n`;
+  text += `💳 *Paiement:* Mobile Money`;
+
+  const waUrl = `https://wa.me/237681246628?text=${encodeURIComponent(text)}`;
+  window.location.href = waUrl;
 }
 
-// Filtrer les cartes
-function filterCards() {
-  const query = document.getElementById('q').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card => {
-    const name = card.dataset.name;
-    card.style.display = name.includes(query) ? 'block' : 'none';
-  });
-}
-
-// Afficher le toast
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.style.display = 'block';
-  setTimeout(() => toast.style.display = 'none', 2000);
-}
-
-// Fermer la modal en cliquant à l'extérieur
-document.getElementById('modal').addEventListener('click', (e) => {
-  if (e.target.id === 'modal') closeModal();
-});
-
-// Initialiser au chargement
-window.addEventListener('DOMContentLoaded', init);
+window.onload = loadUI;
 </script>
 </body>
 </html>
